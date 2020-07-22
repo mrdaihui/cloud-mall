@@ -1,0 +1,42 @@
+nacos:
+  addr: 127.0.0.1:8848
+  namespace: 48970a57-bf3d-4d01-b7d5-df08678cd6ef
+registry:
+  addr: spring-cloud://127.0.0.1
+sentinel:
+  dashboard:
+    addr: localhost:8080
+
+server:
+  port: 8081
+
+dubbo:
+  scan:
+    base-packages: com.dh.order.service.core.service.impl
+  registry:
+    address: ${registry.addr}
+    check: false
+  protocol:
+    name: dubbo
+    port: 20880
+  consumer:
+#  解决Dubbo中生产者未启动，消费者启动报错
+    check: false
+    timeout: 3000
+  cloud:
+    subscribed-services:
+
+spring:
+  application:
+    name: order-service-core
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.addr}
+        namespace: ${nacos.namespace}
+    sentinel:
+      transport:
+      #配置Sentin dashboard地址
+        dashboard: ${sentinel.dashboard.addr}
+        # 默认8719端口，假如被占用了会自动从8719端口+1进行扫描，直到找到未被占用的 端口
+        port: 8720

@@ -1,0 +1,46 @@
+server:
+  port: 8082
+
+#dubbo:
+#  scan:
+##  dubbo服务扫描的包路径
+#    base-packages: com.dh.order.service.core.service.impl
+#  registry:
+##  挂在到spring cloud注册中心
+#    address: spring-cloud://106.13.205.140?namespace=48970a57-bf3d-4d01-b7d5-df08678cd6ef
+#  protocol:
+##  dubbo协议
+#    name: dubbo
+##    duboo协议端口 -1表示自增端口，从20880开始
+#    port: 20881
+#  cloud:
+##  配置需要消费的服务名称
+#    subscribed-services: order-service-core
+
+#spring:
+#  cloud:
+#    nacos:
+#      discovery:
+##      nacos注册中心地址
+#        server-addr: 106.13.205.140:8848
+#        namespace: 48970a57-bf3d-4d01-b7d5-df08678cd6ef
+#    sentinel:
+#      transport:
+#      #配置Sentin dashboard地址
+#        dashboard: localhost:8080
+#        # 默认8719端口，假如被占用了会自动从8719端口+1进行扫描，直到找到未被占用的 端口
+#        port: 8719
+#      datasource:
+#        ds:
+#          nacos:
+#            ### nacos连接地址
+#            server-addr: 106.13.205.140:8848
+#            namespace: 48970a57-bf3d-4d01-b7d5-df08678cd6ef
+#            ## nacos连接的分组
+#            group-id: sentinel-stock
+#            ###路由存储规则
+#            rule-type: flow
+#            ### 读取配置文件的 data-id
+#            data-id: order-service-core
+#            ###  读取培训文件类型为json
+#            data-type: json

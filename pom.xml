@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.dh</groupId>
+    <artifactId>cloud-mall</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>cloud-mall</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
+
+    <modules>
+        <module>common</module>
+        <module>order-service-core</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <lombok.version>1.16.22</lombok.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <guava.version>18.0</guava.version>
+        <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+        <spring-cloud-starter-dubbo.version>2.1.1.RELEASE</spring-cloud-starter-dubbo.version>
+        <spring-cloud-starter-alibaba-nacos-discovery.version>2.1.1.RELEASE</spring-cloud-starter-alibaba-nacos-discovery.version>
+        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
+        <spring-boot-redis.version>2.2.4.RELEASE</spring-boot-redis.version>
+    </properties>
+
+
+    <!--统一版本管理-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--Dubbo Spring Cloud Starter-->
+            <!--<dependency>-->
+                <!--<groupId>com.alibaba.cloud</groupId>-->
+                <!--<artifactId>spring-cloud-starter-dubbo</artifactId>-->
+                <!--<version>${spring-cloud-starter-dubbo.version}</version>-->
+                <!--<exclusions>-->
+                    <!--<exclusion>-->
+                        <!--<groupId>org.springframework.boot</groupId>-->
+                        <!--<artifactId>spring-boot-starter</artifactId>-->
+                    <!--</exclusion>-->
+                <!--</exclusions>-->
+            <!--</dependency>-->
+            <!--&lt;!&ndash; Spring Cloud Nacos Service Discovery &ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>com.alibaba.cloud</groupId>-->
+                <!--<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
+                <!--<version>${spring-cloud-starter-alibaba-nacos-discovery.version}</version>-->
+                <!--<exclusions>-->
+                    <!--<exclusion>-->
+                        <!--<groupId>org.springframework.boot</groupId>-->
+                        <!--<artifactId>spring-boot-starter</artifactId>-->
+                    <!--</exclusion>-->
+                <!--</exclusions>-->
+            <!--</dependency>-->
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot-redis.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

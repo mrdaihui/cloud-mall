@@ -1,0 +1,87 @@
+nacos:
+  addr: 127.0.0.1:8848
+  namespace: 48970a57-bf3d-4d01-b7d5-df08678cd6ef
+registry:
+  addr: spring-cloud://127.0.0.1
+sentinel:
+  dashboard:
+    addr: localhost:8080
+redis:
+  addr: 127.0.0.1
+
+spring:
+  application:
+    name: stock-service-core
+  cloud:
+    nacos:
+      discovery:
+#      nacos注册中心地址
+        server-addr: ${nacos.addr}
+        namespace: ${nacos.namespace}
+#        enabled: true
+      config:
+        server-addr: ${nacos.addr}
+#        prefix: stock-config
+        file-extension: yaml
+#        开发-dev,测试-test,生产-pro
+#        group: dev
+        namespace: ${nacos.namespace}
+    sentinel:
+      transport:
+      #配置Sentin dashboard地址
+        dashboard: ${sentinel.dashboard.addr}
+        # 默认8719端口，假如被占用了会自动从8719端口+1进行扫描，直到找到未被占用的 端口
+        port: 8719
+      #持久化sentinel配置到nacos
+      datasource:
+        ds1:
+          nacos:
+            ### nacos连接地址
+            server-addr: ${nacos.addr}
+            namespace: ${nacos.namespace}
+            ## nacos连接的分组
+            group-id: sentinel-stock
+            ###路由存储规则flow-限流，degrade-降级
+            rule-type: flow
+            ### 读取配置文件的 data-id
+            data-id: ${spring.application.name}-flow
+            ###  读取配置文件类型为json
+            data-type: json
+        ds2:
+          nacos:
+            ### nacos连接地址
+            server-addr: ${nacos.addr}
+            namespace: ${nacos.namespace}
+            ## nacos连接的分组
+            group-id: sentinel-stock
+            ###路由存储规则flow-限流，degrade-降级
+            rule-type: degrade
+            ### 读取配置文件的 data-id
+            data-id: ${spring.application.name}-degrade
+            ###  读取配置文件类型为json
+            data-type: json
+  redis:
+    host: ${redis.addr}
+    database: 0
+    password: P@ssword!
+dubbo:
+  scan:
+#  dubbo服务扫描的包路径
+    base-packages: com.dh.order.service.core.service.impl
+  registry:
+#  挂在到spring cloud注册中心:8848?namespace=48970a57-bf3d-4d01-b7d5-df08678cd6ef
+    address: ${registry.addr}
+#    解决注册失败，启动报错
+    check: false
+  protocol:
+#  dubbo协议
+    name: dubbo
+#    duboo协议端口 -1表示自增端口，从20880开始
+    port: 20881
+  consumer:
+#  解决Dubbo中生产者未启动，消费者启动报错
+    check: false
+    timeout: 3000
+  cloud:
+#  配置需要消费的服务名称
+    subscribed-services: order-service-core
