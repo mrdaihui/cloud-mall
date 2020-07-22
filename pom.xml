@@ -14,7 +14,9 @@
 
     <modules>
         <module>common</module>
+        <module>order-service-api</module>
         <module>order-service-core</module>
+        <module>stock-service-core</module>
     </modules>
 
     <properties>
