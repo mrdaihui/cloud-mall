@@ -27,7 +27,7 @@ public class ConsumerDemo {
 
         // Specify name server addresses.
         //todo 这个参数要改
-        consumer.setNamesrvAddr("106.13.205.140:9876");
+        consumer.setNamesrvAddr("127.0.0.1:9876");
         //广播模式 可能产生重复广播
         consumer.setMessageModel(MessageModel.CLUSTERING);
         // Subscribe one more more topics to consume.

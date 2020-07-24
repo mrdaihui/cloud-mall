@@ -1,17 +1,16 @@
 # cloud-mall
 ###描述:
-springcloud alibaba，nacos，sentinel，redis分布式锁
+springcloud alibaba，nacos，sentinel，redis分布式锁，rocketmq
 
 ##### 项目处于架构测试阶段，模块之间没有相关业务逻辑，待开发......
 ##### 对大家有帮助的话，麻烦start
 ### 技术栈
 
 - nacos是注册中心和配置中心，持久化sentinel配置
-
 - sentinel是接口监控，限流降级
-
 - redis实现分布式锁
 - dubbo实现服务之间的调用
+- rocketmq事务消息
 
 
 
@@ -33,7 +32,9 @@ springcloud alibaba，nacos，sentinel，redis分布式锁
 4. 修改项目中配置文件中sentinel相关地址
 5. 安装redis服务
 6. 修改redis地址
-7. 启动**order-service-core**，**stock-service-core**
+7. 安装rocketmq服务
+8. 修改redis地址
+9. 启动**order-service-core**，**stock-service-core**
 
 
 

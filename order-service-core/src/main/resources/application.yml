@@ -1,11 +1,11 @@
 nacos:
-  addr: 106.13.205.140:8848
+  addr: 127.0.0.1:8848
   namespace: 48970a57-bf3d-4d01-b7d5-df08678cd6ef
 registry:
-  addr: spring-cloud://106.13.205.140
+  addr: spring-cloud://127.0.0.1
 sentinel:
   dashboard:
-    addr: 106.13.205.140:8080
+    addr: 127.0.0.1:8080
 
 server:
   port: 8081
