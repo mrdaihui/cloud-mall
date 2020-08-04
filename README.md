@@ -11,6 +11,7 @@ springcloud alibaba，nacos，sentinel，redis分布式锁，rocketmq
 - redis实现分布式锁
 - dubbo实现服务之间的调用
 - rocketmq事务消息
+- shiro+redis实现用户单设备登录，接口鉴权
 
 
 
@@ -21,6 +22,7 @@ springcloud alibaba，nacos，sentinel，redis分布式锁，rocketmq
   - **order-service-api** ：order模块api接口申明模块，接口提供给order-service-core进行实现，提供给其他consumer模块进行消费
   - **order-service-core** ：具体实现order相关逻辑，并提供order相关服务
   - **stock-service-core** ：具体实现stock相关逻辑。现阶段用于整个架构功能测试
+  - **ouath-service-core**：用户登录，接口鉴权模块，现在是一整个web项目，后续需要考虑抽出成公共模块
 
 
 
@@ -34,9 +36,11 @@ springcloud alibaba，nacos，sentinel，redis分布式锁，rocketmq
 6. 修改redis地址
 7. 安装rocketmq服务
 8. 修改redis地址
-9. 启动**order-service-core**，**stock-service-core**
+9. 启动**order-service-core**，**stock-service-core**，**ouath-service-core**
 
 
+
+注：**ouath-service-core**现在是一个单独的web项目，后续再加入进整体项目中
 
 
 
