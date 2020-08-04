@@ -75,8 +75,8 @@ public class UserContoller {
             if(loginInfo==null){
                 //第一次登录且发生异常了
                 redisLoginUtil.initLoginInfo(username);
-            }else if(loginInfo!=null && loginInfo.getLoginCount()>=5){
-                //登录异常次数过多，锁定用户
+            }else if(loginInfo!=null && loginInfo.getErrorLoginCount()>=4){
+                //登录异常次数过多（登录异常5次），锁定用户
                 redisLoginUtil.lockUser(username);
             }else {
                 //登录异常，登录次数+1

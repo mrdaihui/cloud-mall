@@ -35,7 +35,7 @@ public class RedisLoginUtil {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setIsLock(0);
         loginInfo.setIsLogin(0);
-        loginInfo.setLoginCount(1);
+        loginInfo.setErrorLoginCount(1);
         redisTemplate.opsForValue().set(username,loginInfo,120,TimeUnit.MINUTES);
     };
 
@@ -45,7 +45,7 @@ public class RedisLoginUtil {
      */
     public void addCount(String username){
         LoginInfo loginInfo = getLoginInfo(username);
-        loginInfo.setLoginCount(loginInfo.getLoginCount()+1);
+        loginInfo.setErrorLoginCount(loginInfo.getErrorLoginCount()+1);
         redisTemplate.opsForValue().set(username,loginInfo,120,TimeUnit.MINUTES);
     }
 
@@ -68,7 +68,7 @@ public class RedisLoginUtil {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setIsLock(0);
         loginInfo.setIsLogin(1);
-        loginInfo.setLoginCount(1);
+        loginInfo.setErrorLoginCount(0);
         loginInfo.setToken(token);
         redisTemplate.opsForValue().set(username,loginInfo,120,TimeUnit.MINUTES);
     };
