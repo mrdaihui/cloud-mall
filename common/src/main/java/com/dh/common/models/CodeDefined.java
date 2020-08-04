@@ -19,7 +19,14 @@ public enum CodeDefined {
 
     // MQ 错误
     MQ_SEND_ERROR("7001", "发送MQ消息异常"),
-    MQ_RECEIVE_ERROR("7002", "接收MQ消息异常");
+    MQ_RECEIVE_ERROR("7002", "接收MQ消息异常"),
+
+    ERROR_TOKEN("9900", "TOKEN认证错误"),
+    ERROR_USER_OR_PASS("9901", "用户名或密码错误，请注意区分用户名或密码的大小写"),
+    LOCK_LOGIN("9002", "该账户已被锁定"),
+    LOCK_LOGIN_PASS_MISTAKE("9003", "该账户因为密码错误次数过多，已被暂时锁定，请30分钟后重试登录"),
+    ERROR_CAPTCHA("9004", "验证码错误或失效"),
+    ERROR_SHIRO_AUTH("9005","鉴权失败，暂无权限执行当前操作");
 
 
 	/***************************************************************************/

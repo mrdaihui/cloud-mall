@@ -29,7 +29,7 @@ public class SentinelController {
         return R.ok();
     }
 
-    //测试sentinel降级
+
     @GetMapping("flow")
     @SentinelResource(value = "flow-nacos")
     public R sentinel2() {
@@ -43,6 +43,7 @@ public class SentinelController {
         return R.ok();
     }
 
+    //测试sentinel降级
     @GetMapping("reduce")
     @SentinelResource(value = "reduce", fallback = "reduceException")
     public R reduce() {
@@ -68,4 +69,5 @@ public class SentinelController {
         System.out.println("被降级了");
         return R.error("被降级了");
     }
+
 }

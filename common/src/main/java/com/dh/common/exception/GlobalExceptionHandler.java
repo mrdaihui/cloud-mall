@@ -3,6 +3,8 @@ package com.dh.common.exception;
 import com.dh.common.models.CodeDefined;
 import com.dh.common.models.R;
 import com.dh.common.util.StringUtils;
+import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authz.UnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -175,6 +177,13 @@ public class GlobalExceptionHandler {
         result.put("field", ex.getMessage().split("'")[1]);
         result.put(MESSAGE, "不能为空");
         return R.error(CodeDefined.ERROR_PARAMETER).put("data",result);
+    }
+
+    @ExceptionHandler(value = {UnauthorizedException.class, AuthorizationException.class})
+    @ResponseBody
+    public R shiroAuthorizeFailException(HttpServletRequest req, UnauthorizedException ue, AuthorizationException ae) throws Exception {
+        logger.error("shiro鉴权失败:", ue + "---------" + ae);
+        return  R.error(CodeDefined.ERROR_SHIRO_AUTH);
     }
 
 }

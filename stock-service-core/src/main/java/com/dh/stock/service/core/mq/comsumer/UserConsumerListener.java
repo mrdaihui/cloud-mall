@@ -1,8 +1,12 @@
 package com.dh.stock.service.core.mq.comsumer;
 
 import com.dh.stock.service.core.entity.UserEntity;
+import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
+import org.apache.rocketmq.common.UtilAll;
+import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
+import org.apache.rocketmq.spring.core.RocketMQPushConsumerLifecycleListener;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,4 +23,11 @@ public class UserConsumerListener implements RocketMQListener<UserEntity>{
         System.out.println("consumer入库----"+message);
     }
 
+//    如果要使用PUSH的方式消费实现RocketMQPushConsumerLifecycleListener
+//    @Override
+//    public void prepareStart(DefaultMQPushConsumer consumer) {
+//        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_TIMESTAMP);
+//        consumer.setConsumeTimestamp(UtilAll.timeMillisToHumanString3(System.currentTimeMillis()));
+//
+//    }
 }

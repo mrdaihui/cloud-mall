@@ -1,0 +1,10 @@
+redis:
+  addr: 127.0.0.1
+
+server:
+  port: 8083
+spring:
+  redis:
+    host: ${redis.addr}
+    database: 0
+    password: P@ssword!

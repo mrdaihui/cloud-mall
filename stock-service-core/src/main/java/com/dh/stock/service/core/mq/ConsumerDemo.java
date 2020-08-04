@@ -23,7 +23,7 @@ public class ConsumerDemo {
 
     public static void main(String[] args) throws MQClientException {
         // Instantiate with specified consumer group name.
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("consumerGroupName");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("consumer_group2");
 
         // Specify name server addresses.
         //todo 这个参数要改
@@ -31,7 +31,7 @@ public class ConsumerDemo {
         //广播模式 可能产生重复广播
         consumer.setMessageModel(MessageModel.CLUSTERING);
         // Subscribe one more more topics to consume.
-        consumer.subscribe("topic_user", "*");
+        consumer.subscribe("order_topic", "order_tag");
         // Register callback to execute on arrival of messages fetched from brokers.
         //noinspection Duplicates
         consumer.registerMessageListener((List<MessageExt> msgs,
